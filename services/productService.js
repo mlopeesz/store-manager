@@ -10,9 +10,9 @@ const getAll = async () => {
     }
 };
 
-const getById = async () => {
+const getById = async (id) => {
   try {
-      const product = await productModel.getById();
+      const product = await productModel.getById(id);
       return product;
     } catch (error) {
       console.log(error);
