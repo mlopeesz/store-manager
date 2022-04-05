@@ -10,6 +10,17 @@ const getAll = async () => {
     }
 };
 
+const getById = async () => {
+  try {
+      const product = await productModel.getById();
+      return product;
+    } catch (error) {
+      console.log(error);
+      throw new Error('Database problems');
+    }
+};
+
 module.exports = {
   getAll,
+  getById,
 };
