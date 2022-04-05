@@ -11,13 +11,12 @@ const getAll = async () => {
 };
 
 const getById = async (id) => {
-  try {
       const product = await productModel.getById(id);
-      return product;
-    } catch (error) {
-      console.log(error);
-      throw new Error('Database problems');
-    }
+
+      if (product === undefined) {
+        return { code: 404, message: 'Product not found' };
+      }
+      return { code: 200, message: product };
 };
 
 module.exports = {

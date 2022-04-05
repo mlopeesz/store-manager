@@ -10,13 +10,9 @@ const getAll = async (_req, res) => {
 };
 
 const getById = async (req, res) => {
-  try {
     const { id } = req.params;
-    const product = await productService.getById(id);
-    return res.status(200).json(product);
-  } catch (error) {
-    return res.status(404).send({ message: 'Product not found' });
-  }
+    const { code, message } = await productService.getById(id);
+    return res.status(code).json(message);
 };
 
 module.exports = {
