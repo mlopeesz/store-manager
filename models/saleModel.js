@@ -8,7 +8,7 @@ const getAll = async () => {
 
 const getById = async (id) => {
   const [salesById] = await connection.execute(salesQueries.getByIdQuery, [id]);
-  return salesById[id];
+  return salesById;
 };
 
 module.exports = {

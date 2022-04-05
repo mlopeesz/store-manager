@@ -14,9 +14,9 @@ const getById = async (id) => {
       const product = await productModel.getById(id);
 
       if (product === undefined) {
-        return { code: 404, message: 'Product not found' };
+        return { code: 404, body: { message: 'Product not found' } };
       }
-      return { code: 200, message: product };
+      return { code: 200, body: product };
 };
 
 module.exports = {

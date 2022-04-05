@@ -13,10 +13,10 @@ const getAll = async () => {
 const getById = async (id) => {
       const sale = await saleModel.getById(id);
 
-      if (sale === undefined) {
-        return { code: 404, message: 'Sale not found' };
+      if (sale.length === 0) {
+        return { code: 404, body: { message: 'Sale not found' } };
       }
-      return { code: 200, message: sale };
+      return { code: 200, body: sale };
 };
 
 module.exports = {
