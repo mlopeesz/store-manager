@@ -27,8 +27,16 @@ const create = async ({ name, quantity }) => {
   return { code: 201, body: createResult };
 };
 
+const update = async ({ id, name, quantity }) => {
+  const search = await searchProducts(false, id);
+  if (!search) return { code: 404, body: { message: 'Product not found' } };
+  const updateResult = await productModel.update({ id, name, quantity });
+  return { code: 200, body: updateResult };
+};
+
 module.exports = {
   getAll,
   getById,
   create,
+  update,
 };
