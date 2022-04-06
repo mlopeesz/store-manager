@@ -28,9 +28,16 @@ const update = async (req, res) => {
   return res.status(code).json(body);
 };
 
+const remove = async (req, res) => {
+  const { id } = req.params;
+  const { code, body } = await productService.remove(Number(id));
+  return res.status(code).json(body);
+};
+
 module.exports = {
   getAll,
   getById,
   create,
   update,
+  remove,
 };
