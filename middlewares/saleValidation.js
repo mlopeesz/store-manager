@@ -11,9 +11,10 @@ const valueSchema = Joi.object({
 
 const fieldsValidation = (fields) => {
   const { error: errorRequired } = requiredSchema.validate(fields);
-  const { error: errorValue } = valueSchema.validate(fields);
+  const { error: errorValue } = valueSchema.validate({ quantity: fields.quantity });
   if (errorRequired) return { code: 400, body: { message: errorRequired.message } };
   if (errorValue) return { code: 422, body: { message: errorValue.message } };
+  return false;
 };
 
 const saleValidation = (req, res, next) => {
