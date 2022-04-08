@@ -8,7 +8,7 @@ router.get('/', saleController.getAll);
 
 router.get('/:id', saleController.getById);
 
-router.post('/', saleValidation);
+router.post('/', saleValidation, saleController.create);
 
 router.put('/:id', saleValidation);
 
