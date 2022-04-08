@@ -17,8 +17,12 @@ const salesProducts = `INSERT INTO StoreManager.sales_products
 (sale_id, product_id, quantity) 
 VALUES (?,?,?)`;
 
+const updateSales = `UPDATE StoreManager.sales_products 
+  SET product_id = ?, quantity = ? WHERE sale_id = ?;`;
+
 module.exports = {
   getAllQuery,
   getByIdQuery,
   salesProducts,
+  updateSales,
 };
