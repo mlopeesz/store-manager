@@ -27,8 +27,21 @@ const create = async (req, res) => {
   }
 };
 
+const update = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const sales = req.body;
+    const updateSales = await saleService.update(Number(id), sales);
+
+    return res.status(200).json(updateSales);
+  } catch (err) {
+    return res.status(404).json({ message: err.message });
+  }
+};
+
 module.exports = {
   getAll,
   getById,
   create,
+  update,
 };

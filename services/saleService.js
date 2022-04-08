@@ -29,13 +29,28 @@ const create = async (salesArray) => {
     product.quantity -= data.quantity;
     await productModel.update(product);
   }));
-  
+
   const createSales = await saleModel.create(salesArray);
   return createSales;
+};
+
+const update = async (id, salesArray) => {
+  const checkId = await getById(id);
+  try {
+    if (checkId) {
+      const updateSale = await saleModel.update(id, salesArray);
+      return updateSale;
+    }
+  } catch (error) {
+    if (checkId === undefined) {
+      throw new Error('Product not found');
+    }
+  }
 };
 
 module.exports = {
   getAll,
   getById,
   create,
+  update,
 };

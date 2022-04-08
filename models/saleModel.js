@@ -28,8 +28,22 @@ const create = async (salesArray) => {
   };
 };
 
+const update = async (id, salesArray) => {
+  const { productId, quantity } = salesArray[0];
+
+  connection.execute(salesQueries.updateSales, [productId, quantity, id]);
+
+  return {
+    saleId: id,
+    itemUpdated: [
+      { productId, quantity },
+    ],
+  };
+};
+
 module.exports = {
     getAll,
     getById,
     create,
+    update,
 };
