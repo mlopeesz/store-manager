@@ -13,7 +13,12 @@ ON S.id = SP.sale_id
 WHERE SP.sale_id = ?
 ORDER BY SP.sale_id, SP.product_id;`;
 
+const salesProducts = `INSERT INTO StoreManager.sales_products 
+(sale_id, product_id, quantity) 
+VALUES (?,?,?)`;
+
 module.exports = {
   getAllQuery,
   getByIdQuery,
+  salesProducts,
 };
